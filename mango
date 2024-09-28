@@ -1,15 +1,15 @@
 import streamlit as st
 import pandas as pd
-import plotly.express as px
-# Data Set
-data = pd.read_csv("avocado_full.csv")
-# Minimizing Dataset
-albany_df = data[data['region']=="Albany"]
-al_df = albany_df[albany_df["year"]==2015]
-#Line
-line_chart = px.line(
-x = al_df["Date"],
-y = al_df["Large Bags"]
-)
-st.header("Line Chart")
-st.plotly_chart(line_chart)
+import numpy as np
+
+# Tạo dữ liệu mẫu
+dates = pd.date_range(start="2023-01-01", periods=100)
+data = np.random.randn(100, 1)
+
+# Tạo dataframe
+df = pd.DataFrame(data, columns=['Giá trị'], index=dates)
+
+# Vẽ biểu đồ đường
+st.title("Biểu đồ đường (Line Chart)")
+st.line_chart(df)
+streamlit run your_script.py
