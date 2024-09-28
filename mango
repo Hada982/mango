@@ -1,11 +1,15 @@
-echo "# mango" >> README.md
-git init
-git add README.md
-git commit -m "first commit"
-git branch -M main
-git remote add origin https://github.com/Hada982/mango.git
-git push -u origin main
-…or push an existing repository from the command line
-git remote add origin https://github.com/Hada982/mango.git
-git branch -M main
-git push -u origin main
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+# Data Set
+data = pd.read_csv("avocado_full.csv")
+# Minimizing Dataset
+albany_df = data[data['region']=="Albany"]
+al_df = albany_df[albany_df["year"]==2015]
+#Line
+line_chart = px.line(
+x = al_df["Date"],
+y = al_df["Large Bags"]
+)
+st.header("Line Chart")
+st.plotly_chart(line_chart)
