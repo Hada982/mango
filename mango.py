@@ -7,8 +7,14 @@ url='https://drive.google.com/uc?id=' + url.split('/')[-2]
 data = pd.read_csv(url)
 data
 
-sns.histplot(data['Units Sold'], kde = True)
-plt.title("Distribution of Units Sold")
+data['Date']=pd.to_datetime(data['Date'])
+date_revenue = data.groupby(['Date'])['Total Revenue'].sum().reset_index()
+plt.figure(figsize=(14, 8))
+sns.lineplot(x='Date', y='Total Revenue', data=date_revenue)
+plt.title('Total revenue by month')
+plt.xlabel('Date')
+plt.ylabel('Total Revenue')
+plt.xticks(rotation=45)
+plt.show()
 
-st.header("Distribution of Units Sold")
-st.plotly_chart(line_chart)
+st.pyplotpyplot(plt)
