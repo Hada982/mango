@@ -27,4 +27,3 @@ line_chart = px.line(
 st.header("Biểu đồ Đường (Line Chart) - Large Bags in Albany (2015)")
 st.plotly_chart(line_chart)
 
-streamlit run your_script.py
