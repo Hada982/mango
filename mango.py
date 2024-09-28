@@ -9,3 +9,6 @@ data
 
 sns.histplot(data['Units Sold'], kde = True)
 plt.title("Distribution of Units Sold")
+
+st.header("Distribution of Units Sold")
+st.plotly_chart(line_chart)
